@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آية شريف | مهندسة كهرباء مكتب فني</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a', // Deep Electric Blue
+                        secondary: '#f59e0b', // Accent Amber
+                        darkBg: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .circuit-bg {
+            background-image: radial-gradient(rgba(245, 158, 11, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- نافذة الإشعارات المخصصة (بدل الـ alert) -->
+    <div id="notification" class="fixed bottom-5 left-5 z-50 hidden bg-emerald-600 text-white px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-10 opacity-0 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="notification-text">تم إرسال رسالتك بنجاح!</span>
+    </div>
+
+    <!-- شريط التنقل العلوي -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold text-xl">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg block leading-tight">آية شريف</span>
+                    <span class="text-xs text-amber-400 font-medium">مهندسة كهرباء مكتب فني</span>
+                </div>
+            </a>
+            
+            <!-- روابط التنقل للشاشات الكبيرة -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#about" class="hover:text-amber-400 transition-colors">عني</a>
+                <a href="#experience" class="hover:text-amber-400 transition-colors">الخبرات والمهام</a>
+                <a href="#skills" class="hover:text-amber-400 transition-colors">المهارات الهندسية</a>
+                <a href="#projects" class="hover:text-amber-400 transition-colors">أبرز المشاريع</a>
+                <a href="#contact" class="hover:text-amber-400 transition-colors">تواصل معي</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contact" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/20 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-file-arrow-down"></i> تحميل السيرة الذاتية
+                </a>
+            </div>
+
+            <!-- زر القائمة للجوال -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- قائمة الجوال المنسدلة -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-amber-400">عني</a>
+            <a href="#experience" class="block py-2 text-slate-300 hover:text-amber-400">الخبرات والمهام</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-amber-400">المهارات الهندسية</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-amber-400">أبرز المشاريع</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-amber-400">تواصل معي</a>
+            <div class="pt-2">
+                <a href="#contact" class="w-full text-center block bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl shadow-lg">تواصل معي</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden circuit-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/95 to-slate-950 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-semibold">
+                        <i class="fa-solid fa-circle-dot text-xs animate-pulse"></i> جاهزة للعمل وانضمام لمشاريع جديدة
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        أهلاً، أنا <span class="text-amber-400">آية شريف</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-bold text-slate-300">
+                        مهندسة كهرباء مكتب فني | Electrical Technical Office Engineer
+                    </p>
+                    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        متخصصة في إعداد ومراجعة الرسومات التنفيذية (Shop Drawings)، حصر الكميات (BOQ)، إعداد مستخلصات المقاولين، وتنسيق الأنظمة الكهربائية للمشاريع الإنشائية الكبرى بكفاءة ودقة عالية.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#contact" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all duration-300 shadow-xl shadow-amber-500/20 flex items-center gap-3">
+                            <i class="fa-solid fa-paper-plane"></i> تواصل معي الآن
+                        </a>
+                        <a href="#projects" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold px-8 py-3.5 rounded-xl transition-all duration-300 flex items-center gap-3">
+                            <i class="fa-solid fa-diagram-project"></i> استعرض المشاريع
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start gap-6 pt-6 text-slate-400">
+                        <a href="https://linkedin.com" target="_blank" class="hover:text-amber-400 text-2xl transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank" class="hover:text-amber-400 text-2xl transition-colors"><i class="fa-brands fa-github"></i></a>
+                        <a href="mailto:aya.sherif@example.com" class="hover:text-amber-400 text-2xl transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="tel:+201234567890" class="hover:text-amber-400 text-2xl transition-colors"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                        <!-- إطار ديكوري هندسي -->
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-amber-500 to-blue-600 rotate-6 opacity-30 blur-lg"></div>
+                        <div class="relative w-full h-full rounded-3xl bg-slate-900 border-2 border-slate-800 p-4 shadow-2xl flex flex-col justify-between overflow-hidden">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                                <div class="flex gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                </div>
+                                <span class="text-xs text-slate-500 font-mono">technical_profile.cad</span>
+                            </div>
+                            <div class="my-auto text-center space-y-4">
+                                <div class="w-24 h-24 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-4xl shadow-inner">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-slate-200">آية شريف</h3>
+                                    <p class="text-xs text-slate-400 mt-1">بكالوريوس الهندسة الكهربائية</p>
+                                </div>
+                            </div>
+                            <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800/80 flex justify-around text-center text-xs text-slate-300">
+                                <div>
+                                    <span class="block font-bold text-amber-400 text-base">خبرة</span>
+                                    <span>المكتب الفني</span>
+                                </div>
+                                <div class="border-r border-slate-800"></div>
+                                <div>
+                                    <span class="block font-bold text-amber-400 text-base">حصر & تنفيذي</span>
+                                    <span>Shop Drawings</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم عني (About Me) -->
+    <section id="about" class="py-20 bg-slate-900/50 border-y border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">نبذة تعريفية</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-4">نبذة عن مسيرتي الهندسية</h2>
+                <p class="text-slate-400 mt-2">شغف بالدقة، التنظيم، وإتقان التفاصيل الهندسية الدقيقة في إدارة المشاريع.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-200">الرسومات التنفيذية (Shop Drawings)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        إعداد ومراجعة الرسومات الكهربائية بدقة عالية (Power, Lighting, Low Current) ومطابقتها مع المعايير الهندسية والأكواد العالمية والمحلية.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-200">حصر الكميات ومستندات العطاءات</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        حصر الكميات (BOQ) من الرسومات الهندسية، إعداد دراسات المقايسات، ومتابعة مستخلصات المقاولين والموردين بدقة تامة.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-200">التنسيق الهندسي (Coordination)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        التنسيق المستمر بين القسم الكهربائي والأقسام الأخرى (ميكانيكا، مدني، معماري) لحل التعارضات الهندسية قبل مرحلة التنفيذ بالموقع.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخبرات والمهام (Experience & Duties) -->
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">المسار المهني</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-4">الخبرات والمهام في المكتب الفني</h2>
+                <p class="text-slate-400 mt-2">الأدوار والمسؤوليات الرئيسية التي أديتها بكفاءة عالية في المشاريع الهندسية.</p>
+            </div>
+
+            <div class="relative border-r-2 border-slate-800 mr-4 sm:mr-8 space-y-12">
+                
+                <!-- عنصر خبرة 1 -->
+                <div class="relative pr-8 sm:pr-10">
+                    <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-slate-950"></div>
+                    <div class="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-2xl shadow-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <h3 class="text-xl font-bold text-amber-400">مهندسة كهرباء مكتب فني (تنفيذي وحصر)</h3>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full font-mono">مشاريع إنشائية متكاملة</span>
+                        </div>
+                        <ul class="space-y-3 text-slate-300 text-sm sm:text-base">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-amber-400 mt-1.5"></i>
+                                <span>إعداد مراجعة كاملة للمخططات التنفيذية Shop Drawings لأنظمة الإنارة، مخارج القوى، اللوحات الرئيسية والفرعية (Distribution Boards).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-amber-400 mt-1.5"></i>
+                                <span>القيام بأعمال حصر الكميات الدقيقة (BOQ) للمواد والأجهزة الكهربائية المطلوبة للمشروع مقارنة بالمقايسة الأصلية.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-amber-400 mt-1.5"></i>
+                                <span>مراجعة طلبات الاعتماد (Material Submittals) للمواصفات الفنية للقطع والمعدات الكهربائية وتقديمها للاستشاري للاعتماد.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- عنصر خبرة 2 -->
+                <div class="relative pr-8 sm:pr-10">
+                    <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-slate-950"></div>
+                    <div class="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-2xl shadow-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <h3 class="text-xl font-bold text-amber-400">مهندسة تنسيق ودعم فني (Coordination Engineer)</h3>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full font-mono">قطاع المقاولات</span>
+                        </div>
+                        <ul class="space-y-3 text-slate-300 text-sm sm:text-base">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-amber-400 mt-1.5"></i>
+                                <span>حل التعارضات الهندسية بين مسارات الكابلات والمسارات الخاصة بالأنظمة الميكانيكية والصحية باستخدام برامج التصميم الهندسي.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-amber-400 mt-1.5"></i>
+                                <span>إعداد تقارير سير العمل الفنية ومتابعة استجابة الموقع للملاحظات الهندسية والاستشارية.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-amber-400 mt-1.5"></i>
+                                <span>إعداد كراسات الشروط والمواصفات وحساب الأحمال الكهربائية المبدئية للمنشآت.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المهارات الهندسية وبرامج الكمبيوتر (Skills) -->
+    <section id="skills" class="py-20 bg-slate-900/50 border-y border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">القدرات التقنية</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-4">البرامج والأدوات الهندسية</h2>
+                <p class="text-slate-400 mt-2">الأدوات الاحترافية والبرامج الهندسية التي أتقن استخدامها في عمل المكتب الفني.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center group hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">AutoCAD</h3>
+                    <p class="text-slate-400 text-xs">رسم ومراجعة كافة المخططات التنفيذية بدقة متناهية.</p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center group hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Revit MEP</h3>
+                    <p class="text-slate-400 text-xs">النمذجة ثلاثية الأبعاد والتنسيق الهندسي المتكامل.</p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center group hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">DIALux / ETAP</h3>
+                    <p class="text-slate-400 text-xs">حسابات الإضاءة ودراسات المنظومات الكهربائية.</p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center group hover:border-amber-500/50 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-excel"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">MS Office & Excel</h3>
+                    <p class="text-slate-400 text-xs">جداول الحصر المتقدمة، المستخلصات وإدارة البيانات.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم أبرز المشاريع (Projects) -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">أعمال سابقة</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-4">نماذج من المشاريع الهندسية</h2>
+                <p class="text-slate-400 mt-2">نبذة عن طبيعة المشاريع التي شاركت في إعداد رسوماتها ومستنداتها الفنية.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/50 transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 text-blue-800/30 text-9xl">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <span class="text-xs bg-amber-500 text-slate-950 font-bold px-3 py-1 rounded-full w-fit">مبنى إداري وتجاري</span>
+                        <h3 class="text-xl font-bold text-white relative z-10">أبراج الأعمال المتكاملة</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            إعداد المخططات التنفيذية الكاملة لأنظمة القوى والإنارة، وحصر الكميات للوحات الكهربائية الرئيسية والفرعية ومسارات الكابلات.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Shop Drawings</span>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded">BOQ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/50 transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 text-blue-800/30 text-9xl">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <span class="text-xs bg-amber-500 text-slate-950 font-bold px-3 py-1 rounded-full w-fit">مجمع سكني</span>
+                        <h3 class="text-xl font-bold text-white relative z-10">مشروع الفلل السكنية الحديثة</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            مراجعة وحصر كميات أعمال التمديدات الكهربائية، إنارة اللاندسكيب، وأنظمة التيار الخفيف (Smart Home & CCTV) للوحدات.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded">AutoCAD</span>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Low Current</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/50 transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 text-blue-800/30 text-9xl">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <span class="text-xs bg-amber-500 text-slate-950 font-bold px-3 py-1 rounded-full w-fit">منشأة صناعية</span>
+                        <h3 class="text-xl font-bold text-white relative z-10">محطة توزيع ومرافق صناعية</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            المشاركة في إعداد مستندات العطاءات ومتابعة اعتمادات المواد والمعدات الكهربائية الثقيلة المطابقة للمواصفات القياسية.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Submittals</span>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Tenders</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم تواصل معي (Contact) -->
+    <section id="contact" class="py-20 bg-slate-900/50 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-semibold text-sm tracking-wider uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">تواصل مباشر</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-4">دعنا نتبادل الخبرات ونعمل معاً</h2>
+                <p class="text-slate-400 mt-2">يسعدني تلقي استفساراتكم وعروض العمل المهنية.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl space-y-6">
+                        <h3 class="text-xl font-bold text-white mb-2">معلومات الاتصال</h3>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">البريد الإلكتروني</span>
+                                <a href="mailto:aya.sherif@example.com" class="font-medium hover:text-amber-400 transition-colors">aya.sherif@example.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">رقم الهاتف / واتساب</span>
+                                <a href="tel:+201234567890" class="font-medium hover:text-amber-400 transition-colors" dir="ltr">+20 123 456 7890</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">الموقع</span>
+                                <span class="font-medium text-slate-200">متاحة للعمل المكتبي أو عن بُعد (Remote)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <form id="contact-form" onsubmit="handleSubmit(event)" class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">الاسم الكريم</label>
+                                <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500 transition-colors" placeholder="ادخل اسمك">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">البريد الإلكتروني</label>
+                                <input type="email5" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500 transition-colors" placeholder="name@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">الموضوع</label>
+                            <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500 transition-colors" placeholder="عرض عمل / استفسار فني">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">الرسالة</label>
+                            <textarea rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500 transition-colors" placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-xl transition-all duration-300 shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر (Footer) -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8 text-center text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 م. آية شريف. جميع الحقوق محفوظة.</p>
+            <p class="text-xs text-slate-600">مهندسة كهرباء مكتب فني | مصمم خصيصاً للرفع على GitHub Pages</p>
+        </div>
+    </footer>
+
+    <!-- سكريبتات التفاعل -->
+    <script>
+        // تفعيل قائمة الجوال
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // إغلاق قائمة الجوال عند اختيار رابط
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // التعامل مع الإرسال بدون استخدام alert الممنوعة
+        function handleSubmit(event) {
+            event.preventDefault();
+            const notification = document.getElementById('notification');
+            
+            // إظهار الإشعار بتصميم أنيق
+            notification.classList.remove('hidden', 'translate-y-10', 'opacity-0');
+            notification.classList.add('translate-y-0', 'opacity-100');
+
+            // تصفير النموذج
+            document.getElementById('contact-form').reset();
+
+            // إخفاء الإشعار بعد 4 ثوانٍ
+            setTimeout(() => {
+                notification.classList.remove('translate-y-0', 'opacity-100');
+                notification.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
